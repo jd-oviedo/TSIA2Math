@@ -34,13 +34,20 @@ import type { createAdminClient } from "./supabase-admin";
 // drops out of this sweep on their own. That is the exclusion, and there is
 // deliberately no second one.
 //
-// WHEN. Passes whose access_until falls on a given CENTRAL calendar date.
-// A pass has exactly one Central expiry date, and each date is "tomorrow" on
-// exactly one daily run, so a pass is caught once and never falls between two
-// runs. The lead time is whatever is left of today plus all of tomorrow, which
-// at the 12:00 UTC schedule is 17 to 41 hours, and it makes the word
-// "tomorrow" in the copy literally true. The date offset is a parameter so a
-// day-of-expiry email is a second config, not a second sweep.
+// WHEN. Passes whose access_until is 24 to 48 hours after the run's scheduled
+// slot: [slot + 24h, slot + 48h). The cron fires once a day at a fixed UTC
+// hour (vercel.json), so consecutive runs sit exactly 24h apart and their
+// 24h-wide windows tile the timeline with no gap and no overlap: a pass is
+// caught by exactly one run, and every buyer gets a heads up between one and
+// two days out, so "tomorrow" in the subject line is honest for all of them.
+//
+// ANCHORED TO THE SLOT, NOT TO THE WALL CLOCK. A cron that fires a few
+// minutes late, or a manual re-trigger later that day, would otherwise slide
+// its window and leave a sliver of passes that no run ever covers. So the
+// window is computed from the most recent scheduled slot at or before now,
+// which makes every run on a given day compute the identical window whatever
+// the clock says. The lead and width are parameters so a day-of-expiry email
+// is a second config, not a second sweep.
 //
 // EXACTLY ONCE, WITHOUT A COLUMN. Before a send, one Redis SET NX on a key
 // naming the pass and the email type. The key is reserved BEFORE the send so
@@ -57,16 +64,28 @@ import type { createAdminClient } from "./supabase-admin";
 export type ReminderConfig = {
   /** Dedupe key prefix and log tag. One per email type. */
   name: string;
-  /** 1 sends on the Central day before expiry; 0 would send on the day itself. */
-  daysBeforeExpiry: number;
+  /** Hour of the day, UTC, the cron is scheduled for. MUST match vercel.json. */
+  slotUtcHour: number;
+  /** Window opens this many hours after the slot. 24 is "the day before". */
+  leadHours: number;
+  /** Window width. MUST equal the cron cadence, or passes are missed or doubled. */
+  widthHours: number;
 };
 
-export const TRIPWIRE_DAY6: ReminderConfig = { name: "tripwire-day6", daysBeforeExpiry: 1 };
+/** 14:00 UTC is 9am Central (8am during standard time). See vercel.json. */
+export const CRON_SLOT_UTC_HOUR = 14;
+
+export const TRIPWIRE_DAY6: ReminderConfig = {
+  name: "tripwire-day6",
+  slotUtcHour: CRON_SLOT_UTC_HOUR,
+  leadHours: 24,
+  widthHours: 24,
+};
 
 /** Longer than the pass by a wide margin. The key only has to outlive the window. */
 export const DEDUPE_TTL_SECONDS = 30 * 24 * 60 * 60;
 
-const CENTRAL = "America/Chicago";
+const HOUR_MS = 60 * 60 * 1000;
 
 type Admin = ReturnType<typeof createAdminClient>;
 
@@ -108,50 +127,21 @@ export type SweepResult = {
 // Window
 // ---------------------------------------------------------------------------
 
-const centralParts = new Intl.DateTimeFormat("en-US", {
-  timeZone: CENTRAL,
-  hourCycle: "h23",
-  year: "numeric",
-  month: "2-digit",
-  day: "2-digit",
-  hour: "2-digit",
-  minute: "2-digit",
-  second: "2-digit",
-});
-
-function wallClock(at: Date): { y: number; m: number; d: number; asUtcMs: number } {
-  const get = (type: string) =>
-    Number(centralParts.formatToParts(at).find((p) => p.type === type)?.value);
-  const y = get("year");
-  const m = get("month");
-  const d = get("day");
-  const asUtcMs = Date.UTC(y, m - 1, d, get("hour"), get("minute"), get("second"));
-  return { y, m, d, asUtcMs };
+/** The most recent scheduled slot at or before `now`. */
+export function scheduledSlot(now: Date, slotUtcHour: number): Date {
+  const slot = new Date(
+    Date.UTC(now.getUTCFullYear(), now.getUTCMonth(), now.getUTCDate(), slotUtcHour)
+  );
+  if (slot.getTime() > now.getTime()) slot.setUTCDate(slot.getUTCDate() - 1);
+  return slot;
 }
 
-// Midnight Central on the given Central calendar date, as an instant. Two
-// passes because the UTC offset at the guess and at the answer can differ on
-// a DST boundary.
-function centralMidnight(y: number, m: number, d: number): Date {
-  const guess = Date.UTC(y, m - 1, d);
-  const offset1 = wallClock(new Date(guess)).asUtcMs - guess;
-  let t = guess - offset1;
-  const offset2 = wallClock(new Date(t)).asUtcMs - t;
-  if (offset2 !== offset1) t = guess - offset2;
-  return new Date(t);
-}
-
-/**
- * [start, end) of the Central calendar date `daysAhead` days after `now`'s
- * Central date. Day arithmetic is done on the calendar, not in milliseconds,
- * so a DST day is still one day.
- */
-export function centralDayWindow(now: Date, daysAhead: number): { start: Date; end: Date } {
-  const { y, m, d } = wallClock(now);
-  return {
-    start: centralMidnight(y, m, d + daysAhead),
-    end: centralMidnight(y, m, d + daysAhead + 1),
-  };
+/** [slot + lead, slot + lead + width). Half-open, so adjacent windows share no instant. */
+export function sweepWindow(now: Date, config: ReminderConfig): { start: Date; end: Date } {
+  const slot = scheduledSlot(now, config.slotUtcHour);
+  const start = new Date(slot.getTime() + config.leadHours * HOUR_MS);
+  const end = new Date(start.getTime() + config.widthHours * HOUR_MS);
+  return { start, end };
 }
 
 // ---------------------------------------------------------------------------
@@ -228,7 +218,7 @@ export async function runTripwireReminderSweep(
   deps: SweepDeps
 ): Promise<SweepResult> {
   const now = deps.now ?? new Date();
-  const { start, end } = centralDayWindow(now, config.daysBeforeExpiry);
+  const { start, end } = sweepWindow(now, config);
   const tag = `[${config.name}]`;
   const result: SweepResult = {
     window: { start: start.toISOString(), end: end.toISOString() },

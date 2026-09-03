@@ -152,17 +152,23 @@ function createFakeSender(opts = {}) {
 }
 
 // ---------------------------------------------------------------------------
-// Fixtures. NOW is a Tuesday morning Central; "tomorrow" is Wednesday Sept 9.
+// Fixtures. NOW is the scheduled slot: 14:00 UTC, 9am Central, on a Tuesday.
+// The window is [Wed 14:00 UTC, Thu 14:00 UTC), i.e. 24 to 48 hours out.
 // ---------------------------------------------------------------------------
 
-const NOW = new Date('2026-09-08T12:00:00.000Z');
+const NOW = new Date('2026-09-08T14:00:00.000Z');
 const ONE_DAY = 24 * 60 * 60 * 1000;
+const HOUR = 60 * 60 * 1000;
+const hoursOut = (h) => new Date(NOW.getTime() + h * HOUR);
 
 const expiring = {
-  today: new Date('2026-09-08T20:00:00.000Z'),
-  tomorrow: new Date('2026-09-09T15:30:00.000Z'),
-  tomorrowLate: new Date('2026-09-10T04:30:00.000Z'), // 11:30pm Central Sept 9
-  dayAfter: new Date('2026-09-10T15:30:00.000Z'),
+  today: hoursOut(6),
+  tomorrow: hoursOut(25.5),
+  tomorrowLate: hoursOut(38.5),
+  dayAfter: hoursOut(49.5),
+  at36h: hoursOut(36),
+  at12h: hoursOut(12),
+  at60h: hoursOut(60),
 };
 
 const USERS = {
@@ -172,6 +178,9 @@ const USERS = {
   upgraded: { email: 'upgraded@example.com', firstName: 'Kim' },
   wrongday: { email: 'wrongday@example.com', firstName: 'Lee' },
   today: { email: 'today@example.com', firstName: 'Sam' },
+  h36: { email: 'h36@example.com', firstName: 'Ida' },
+  h12: { email: 'h12@example.com', firstName: 'Bo' },
+  h60: { email: 'h60@example.com', firstName: 'Cy' },
 };
 
 const attemptsByProfile = {
@@ -190,6 +199,9 @@ const attemptsByProfile = {
   ],
   wrongday: [],
   today: [],
+  h36: [],
+  h12: [],
+  h60: [],
 };
 
 function profile(id, accessUntil, overrides = {}) {
@@ -225,6 +237,9 @@ function seedDb() {
       profile('upgraded', expiring.tomorrow, { stripe_payment_link_id: REAL_FULL_COURSE_PLINK }),
       profile('wrongday', expiring.dayAfter),
       profile('today', expiring.today),
+      profile('h36', expiring.at36h),
+      profile('h12', expiring.at12h),
+      profile('h60', expiring.at60h),
     ],
     pending_entitlements: [
       pending('pe-unclaimed', 'never@example.com', expiring.tomorrow),
@@ -332,25 +347,62 @@ async function checkWindow(mod) {
   const result = await sweep(mod, ctx);
   const got = byPass(result);
   // Behaviour first, so a mutant goes red on what was SENT, not on a timestamp.
-  if (got.wrongday) return 'a pass expiring the day after tomorrow was emailed';
-  if (got['pe-wrongday']) return 'an unclaimed pass expiring the day after tomorrow was emailed';
-  if (got.today) return 'a pass expiring today was emailed by the day-before sweep';
-  if (!got.engaged) return 'a pass expiring tomorrow (Central) was not emailed';
-  if (!got.late) return 'a pass expiring 11:30pm Central tomorrow was not emailed';
-  if (result.window.start !== '2026-09-09T05:00:00.000Z') return `window start ${result.window.start}`;
-  if (result.window.end !== '2026-09-10T05:00:00.000Z') return `window end ${result.window.end}`;
+  if (!got.h36) return 'a pass 36 hours out was not emailed';
+  if (got.h12) return 'a pass 12 hours out was emailed';
+  if (got.h60) return 'a pass 60 hours out was emailed';
+  if (got.wrongday) return 'a pass 49.5 hours out was emailed';
+  if (got['pe-wrongday']) return 'an unclaimed pass 49.5 hours out was emailed';
+  if (got.today) return 'a pass 6 hours out was emailed';
+  if (!got.engaged) return 'a pass 25.5 hours out was not emailed';
+  if (!got.late) return 'a pass 38.5 hours out was not emailed';
+  if (result.window.start !== '2026-09-09T14:00:00.000Z') return `window start ${result.window.start}`;
+  if (result.window.end !== '2026-09-10T14:00:00.000Z') return `window end ${result.window.end}`;
+  return null;
+}
+
+// Exactly once, BY THE WINDOW ALONE. Dedupe is disabled (reserve always says
+// yes) and the database is fresh for each run, so the only thing that can
+// keep a pass from being emailed twice, or from being emailed at all, is the
+// window arithmetic. Passes sit at every hour from 0 to 96 out, including the
+// exact boundaries at 24, 48 and 72, and the second run is jittered seven
+// minutes late the way a real cron can be.
+async function checkExactlyOnce(mod) {
+  const offsets = Array.from({ length: 97 }, (_, h) => h);
+  const seedFor = () =>
+    createFakeDb({
+      profiles: offsets.map((h) => profile(`h${h}`, hoursOut(h))),
+      pending_entitlements: [],
+    });
+  const noDedupe = { reserve: async () => true, release: async () => {}, store: new Map() };
+  const runs = [NOW, new Date(NOW.getTime() + ONE_DAY + 7 * 60 * 1000)];
+  const caught = new Map(offsets.map((h) => [`h${h}`, 0]));
+  const sender = createFakeSender();
+  for (const at of runs) {
+    const ctx = depsFor(mod, { db: seedFor(), redis: noDedupe, sender });
+    ctx.deps.now = at;
+    ctx.deps.userFor = async (id) => ({ email: `${id}@example.com`, firstName: 'X' });
+    const result = await sweep(mod, ctx);
+    for (const e of result.sent) caught.set(e.passId, caught.get(e.passId) + 1);
+  }
+  const twice = offsets.filter((h) => caught.get(`h${h}`) > 1);
+  if (twice.length) return `double-caught across two daily runs at hours ${twice.join(',')}`;
+  const missed = offsets.filter((h) => h >= 24 && h < 72 && caught.get(`h${h}`) !== 1);
+  if (missed.length) return `missed across two daily runs at hours ${missed.join(',')}`;
+  const outside = offsets.filter((h) => (h < 24 || h >= 72) && caught.get(`h${h}`) !== 0);
+  if (outside.length) return `caught outside the two windows at hours ${outside.join(',')}`;
+  if (sender.sent.length !== 48) return `sent ${sender.sent.length} across two runs, expected 48`;
   return null;
 }
 
 async function checkDedupe(mod) {
   const ctx = depsFor(mod);
   const first = await sweep(mod, ctx);
-  if (first.sent.length !== 4) return `first run sent ${first.sent.length}, expected 4`;
+  if (first.sent.length !== 5) return `first run sent ${first.sent.length}, expected 5`;
   const again = depsFor(mod, { db: seedDb(), redis: ctx.redis, sender: ctx.sender });
   const second = await sweep(mod, again);
   if (second.sent.length !== 0) return `second run re-sent ${second.sent.length}`;
-  if (second.duplicates.length !== 4) return `second run reported ${second.duplicates.length} duplicates`;
-  if (ctx.sender.sent.length !== 4) return `sender saw ${ctx.sender.sent.length} sends across two runs`;
+  if (second.duplicates.length !== 5) return `second run reported ${second.duplicates.length} duplicates`;
+  if (ctx.sender.sent.length !== 5) return `sender saw ${ctx.sender.sent.length} sends across two runs`;
   const keys = [...ctx.redis.store.keys()];
   if (!keys.every((k) => k.startsWith('tripwire-day6:'))) return `key prefix: ${keys}`;
   if (!keys.includes(`tripwire-day6:engaged:${expiring.tomorrow.toISOString()}`)) return `profile key shape: ${keys}`;
@@ -378,8 +430,8 @@ async function checkExtras(mod) {
   const result = await sweep(mod, ctx);
   if (result.failed.length !== 1 || result.failed[0].passId !== 'idle') return 'failed send not reported';
   if (ctx.redis.store.has(result.failed[0].key)) return 'failed send left its dedupe key reserved';
-  if (result.sent.length !== 3) return `sent ${result.sent.length} around the failure`;
-  if (ctx.captured.length !== 3) return `captured ${ctx.captured.length} analytics events, expected 3`;
+  if (result.sent.length !== 4) return `sent ${result.sent.length} around the failure`;
+  if (ctx.captured.length !== 4) return `captured ${ctx.captured.length} analytics events, expected 4`;
   if (!ctx.captured.every((e) => e.event === 'tripwire_reminder_sent' && e.properties.reminder === 'tripwire-day6')) return 'analytics event shape';
 
   if (mod.isCronAuthorized('Bearer s3cret', 's3cret') !== true) return 'auth: correct secret rejected';
@@ -388,8 +440,15 @@ async function checkExtras(mod) {
   if (mod.isCronAuthorized('Bearer s3cret', undefined) !== false) return 'auth: unset secret accepted';
   if (mod.isCronAuthorized('Bearer ', '') !== false) return 'auth: empty secret accepted';
 
-  const win = mod.centralDayWindow(new Date('2026-03-07T18:00:00.000Z'), 1);
-  if (win.end.getTime() - win.start.getTime() !== 23 * 60 * 60 * 1000) return 'DST spring-forward day is not 23h long';
+  // A run before today's slot belongs to yesterday's slot; a late run to today's.
+  const early = mod.sweepWindow(new Date('2026-09-08T13:59:00.000Z'), mod.TRIPWIRE_DAY6);
+  if (early.start.toISOString() !== '2026-09-08T14:00:00.000Z') return `pre-slot run anchored to ${early.start.toISOString()}`;
+  const late = mod.sweepWindow(new Date('2026-09-08T14:07:00.000Z'), mod.TRIPWIRE_DAY6);
+  if (late.start.toISOString() !== '2026-09-09T14:00:00.000Z') return `late run anchored to ${late.start.toISOString()}`;
+  if (mod.CRON_SLOT_UTC_HOUR !== 14) return 'slot hour is not 14:00 UTC';
+  const vercel = JSON.parse(readFileSync('vercel.json', 'utf8'));
+  const job = vercel.crons.find((c) => c.path === '/api/cron/tripwire-day6');
+  if (!job || job.schedule !== `0 ${mod.CRON_SLOT_UTC_HOUR} * * *`) return `vercel.json schedule ${job?.schedule} disagrees with CRON_SLOT_UTC_HOUR`;
   return null;
 }
 
@@ -427,13 +486,29 @@ const PROPERTIES = [
     mutants: [
       {
         label: 'window slid one day late',
-        needle: 'centralDayWindow(now, config.daysBeforeExpiry)',
-        replacement: 'centralDayWindow(now, config.daysBeforeExpiry + 1)',
+        needle: 'const start = new Date(slot.getTime() + config.leadHours * HOUR_MS);',
+        replacement: 'const start = new Date(slot.getTime() + (config.leadHours + 24) * HOUR_MS);',
       },
       {
-        label: 'window widened to two days',
-        needle: 'end: centralMidnight(y, m, d + daysAhead + 1),',
-        replacement: 'end: centralMidnight(y, m, d + daysAhead + 2),',
+        label: 'window widened to 48 hours',
+        needle: 'const end = new Date(start.getTime() + config.widthHours * HOUR_MS);',
+        replacement: 'const end = new Date(start.getTime() + 2 * config.widthHours * HOUR_MS);',
+      },
+    ],
+  },
+  {
+    name: 'exactly once across two daily runs (dedupe disabled)',
+    check: checkExactlyOnce,
+    mutants: [
+      {
+        label: 'window widened to 48 hours (double-catch)',
+        needle: 'const end = new Date(start.getTime() + config.widthHours * HOUR_MS);',
+        replacement: 'const end = new Date(start.getTime() + 2 * config.widthHours * HOUR_MS);',
+      },
+      {
+        label: 'window anchored to the wall clock, not the slot (jitter opens a gap)',
+        needle: 'const slot = scheduledSlot(now, config.slotUtcHour);',
+        replacement: 'const slot = now;',
       },
     ],
   },
@@ -469,7 +544,7 @@ const PROPERTIES = [
       },
     ],
   },
-  { name: 'extras (send failure releases key, auth, DST)', check: checkExtras, mutants: [] },
+  { name: 'extras (send failure releases key, auth, slot anchoring, vercel.json)', check: checkExtras, mutants: [] },
 ];
 
 let failures = 0;
