@@ -1,0 +1,11 @@
+{
+  "type": "coordinate_plane",
+  "xLabel": "Hours Practiced",
+  "yLabel": "Free Throws Made out of 50",
+  "xRange": [0, 12],
+  "yRange": [0, 50],
+  "plots": [
+    { "path": [[1, 8], [11, 46]], "scatter": "tight", "n": 16 }
+  ],
+  "alt": "A scatterplot of hours practiced, from 0 to 12, against free throws made out of 50, from 0 to 50. The 16 points cluster tightly around a rising trend running from about 1 hour and 8 free throws to 11 hours and 46 free throws."
+}

@@ -26,6 +26,7 @@
 import { readFileSync } from 'fs';
 import { figureFromSpec, verifyPlane, verifyBounds } from './make_figure.mjs';
 import { buildTable, verifyTable } from './figure_table.mjs';
+import { buildShape, verifyShape } from './figure_shapes.mjs';
 
 const REGIONS = {
   bars: /<rect data-bar="(\d+)"/g,
@@ -209,6 +210,103 @@ ser.fault('series drawn through the wrong point order (weeks 2 and 3 swapped)',
 
 console.log('');
 ser.control('after');
+
+// ─── SCATTERPLOTS ────────────────────────────────────────────────────────────
+console.log('\n\nSCATTERPLOT FAULT PROOFS  (harness-scatterplot-practice, 16-point cloud)\n');
+const scatter = new Harness('curriculum/figures/harness-scatterplot-practice.json');
+scatter.control('before');
+console.log('\nfaults injected into the emitted SVG:');
+
+// A cloud point moved off the position scatterCloud() actually generated for
+// it, the same class of defect a mis-scaled axis or a jitter typo produces.
+scatter.fault('a cloud point drawn away from its generated position',
+  '<circle data-scatter="0-0" cx="69.68" cy="180.65"',
+  '<circle data-scatter="0-0" cx="109.68" cy="180.65"',
+  ['plot 0 point 0 x']);
+
+// A point dropped from the cloud outright. Every later point then reads as
+// shifted by one position, because the comparison is positional (point k
+// against generated point k), which is what makes a silent drop visible
+// rather than merely undercounting.
+scatter.fault('a cloud point dropped (count now 15, not the declared 16)',
+  '<circle data-scatter="0-5" cx="142.1" cy="122.63" r="3" fill="#F0A33E" stroke="#0E0E11" stroke-width="0.8"/>',
+  '',
+  ['plot 0 cloud count', 'plot 0 point 5 x']);
+
+console.log('');
+scatter.control('after');
+
+// The trend-direction check needs two DIFFERENT declarations compared against
+// the same drawn cloud, which Harness's single-spec model does not express,
+// so it is proven directly rather than through the class above.
+{
+  const rising = JSON.parse(readFileSync('curriculum/figures/harness-scatterplot-practice.json', 'utf8'));
+  const falling = { ...rising, plots: [{ ...rising.plots[0], path: [[1, 46], [11, 8]] }] };
+  const svgFalling = figureFromSpec(falling).svg;
+
+  const selfBad = verifyPlane(falling, svgFalling).filter(c => !c.ok);
+  const selfGood = selfBad.length === 0;
+  ok &&= selfGood;
+  console.log(`  [${selfGood ? 'PASS' : 'CONTROL FAILED'}] control: a falling spec against its own honestly-drawn falling cloud`);
+
+  // The SAME drawn SVG, checked against a spec that declares the OPPOSITE
+  // trend. A declared path and a drawn cloud that merely agree with each
+  // other pass no matter what they claim (see the doc comment above
+  // verifyScatter) -- this proves the one thing that IS independently
+  // checkable: the drawn cloud's own gross direction against what the spec
+  // in hand says it should be.
+  const mismatchBad = verifyPlane(rising, svgFalling).filter(c => !c.ok);
+  const caught = mismatchBad.some(c => c.name === 'plot 0 cloud trend direction');
+  ok &&= caught;
+  console.log(`  [${caught ? 'PASS' : 'PROOF FAILED'}] a spec declaring a RISING trend checked against a cloud honestly drawn FALLING`);
+  console.log(`        ${mismatchBad.length} failure(s), trend check ${caught ? 'fired' : 'did not fire'}`);
+}
+
+// ─── DOT PLOTS ───────────────────────────────────────────────────────────────
+console.log('\n\nDOT PLOT FAULT PROOFS  (harness-dot-plot-pets, 4 stacks)\n');
+{
+  const spec = JSON.parse(readFileSync('curriculum/figures/harness-dot-plot-pets.json', 'utf8'));
+  const clean = buildShape(spec);
+  const cleanBad = verifyShape(spec, clean).filter(c => !c.ok);
+  const cleanGood = cleanBad.length === 0;
+  ok &&= cleanGood;
+  console.log(`  [${cleanGood ? 'PASS' : 'CONTROL FAILED'}] control before: ${verifyShape(spec, clean).length} assertions, ${cleanBad.length} failed`);
+  console.log('\nfaults injected into the emitted SVG:');
+
+  const fault = (label, old, neu, expect) => {
+    if (!clean.includes(old)) { console.log(`  [PROOF FAILED] ${label}: target absent`); ok = false; return; }
+    const faulted = clean.replace(old, neu);
+    if (faulted === clean) { console.log(`  [PROOF FAILED] ${label}: replace was a no-op`); ok = false; return; }
+    const bad = verifyShape(spec, faulted).filter(c => !c.ok);
+    const names = bad.map(b => b.name);
+    const missing = expect.filter(e => !names.some(nm => nm.includes(e)));
+    const caught = bad.length > 0 && missing.length === 0;
+    ok &&= caught;
+    console.log(`  [${caught ? 'PASS' : 'PROOF FAILED'}] ${label}`);
+    console.log(`        ${bad.length} failure(s): ${names.join(', ') || 'NONE'}`);
+    if (missing.length) console.log(`        expected but not reported: ${missing.join(', ')}`);
+  };
+
+  // A dot dropped from a stack: the tally for that value is now wrong.
+  fault('a dot dropped from a stack (value 1 now shows 2, not the declared 3)',
+    '<circle data-dot="1-2" cx="142.5" cy="50" r="7" fill="#F0A33E" stroke="#0E0E11" stroke-width="0.8"/>',
+    '',
+    ['stack 1 dot count']);
+
+  // A dot floating off its own tick's x, as opposed to stacked above it.
+  fault('a dot drawn off its own tick (value 2 dot drifts sideways)',
+    '<circle data-dot="2-0" cx="217.5" cy="84"',
+    '<circle data-dot="2-0" cx="235" cy="84"',
+    ['stack 2 dot aligned to its tick']);
+
+  // A tick relabelled so it no longer names the value its stack is counting.
+  fault('a tick label does not match its declared value (0 relabelled 9)',
+    '<text data-role="tick" x="67.5" y="111" text-anchor="middle" font-family="ui-sans-serif,system-ui,sans-serif" font-size="12" fill="#0E0E11">0</text>',
+    '<text data-role="tick" x="67.5" y="111" text-anchor="middle" font-family="ui-sans-serif,system-ui,sans-serif" font-size="12" fill="#0E0E11">9</text>',
+    ['stack 0 label is "0"']);
+
+  console.log(`\n  [${verifyShape(spec, clean).filter(c => !c.ok).length === 0 ? 'PASS' : 'CONTROL FAILED'}] control after: unchanged spec still verifies clean`);
+}
 
 // ─── BOUNDS: THE LEGIBILITY GAP ──────────────────────────────────────────────
 //

@@ -287,6 +287,57 @@ disagrees with the numbers in the stem, and nothing in the pipeline checks that.
 Where a figure does exist, the stem still restates every number in it, so the item
 is answerable without the picture. 54 items across 7 topics carry one.
 
+### Figure spec types, for reference only
+
+This does not change the rule above: Migo still does not author a spec or a data
+URI. This is here so a question like "what fields does a dot plot take" can be
+answered correctly instead of guessed at, and so a human author writing a new
+`curriculum/figures/<id>.json` by hand knows the exact shape to write against.
+The code is the actual source of truth; this is a pointer into it, not a
+replacement for it.
+
+`scripts/make_figure.mjs` builds `type: "coordinate_plane"` specs (a numeric x-y
+plane; the shared axis/grid/tick machinery lives there), `scripts/figure_shapes.mjs`
+builds the standalone geometric and data-display types (`polygon`,
+`right_triangle`, `solid3d`, `transform_pair`, `similar_pair`, `symmetry`,
+`circle_plane`, `dot_plot`), and `scripts/figure_table.mjs` builds `data_table`
+and `pictograph`. Every type requires `type` and `alt` (`alt` is a full sentence
+restating every number, so the item is answerable without the image — the
+screen-reader parity rule, same as the "restates every number" rule above).
+
+Two types were added to the worksheet pipeline most recently, ported from the
+adaptive-test item bank's `FigureRenderer.tsx` (a separate React renderer used
+by `data/items/**`, which this pipeline does not read from or write to):
+
+- **`dot_plot`** (`scripts/figure_shapes.mjs`) — a value ladder with dots stacked
+  above each value.
+  ```json
+  {"type": "dot_plot", "xValues": [0, 1, 2, 3], "counts": [2, 3, 1, 2],
+   "xLabel": "Pets owned", "alt": "..."}
+  ```
+  `xValues` is the strictly increasing ladder of values printed on the axis;
+  `counts[i]` is how many dots stack above `xValues[i]`. Both arrays are
+  required and must be the same length.
+
+- **`plots`, a `coordinate_plane` content array** (`scripts/make_figure.mjs`) —
+  a scatterplot: a generated cloud of points, not a literal list of raw data.
+  ```json
+  {"type": "coordinate_plane", "xLabel": "Hours Practiced",
+   "yLabel": "Free Throws Made out of 50", "xRange": [0, 12], "yRange": [0, 50],
+   "plots": [{"path": [[1, 8], [11, 46]], "scatter": "tight", "n": 16}]}
+  ```
+  `path` is the trend line the cloud follows, as vertices in data coordinates
+  (two vertices for a straight association, three or more for a curved one);
+  `scatter` is the spread band (`"none"`, `"tight"`, `"moderate"`, or `"wide"`,
+  default `"moderate"`); `n` is the point count and has no default, because how
+  much data a scatterplot shows is a content claim. An optional `points` array
+  on the same object adds exact-coordinate outliers a stem names explicitly.
+  `xRange`/`yRange` are required, the same as they are for `bars`/`boxes`.
+  `plots` sits alongside `bars`, `boxes`, `lines`, `curves`, and `series` as a
+  `coordinate_plane` content array; it cannot share a plane with `bars` or
+  `boxes`, because those put a categorical axis where a scatter needs numeric
+  x and y.
+
 ## House rules
 
 These are the rules `scripts/lint_curriculum_source.py` enforces before an upload.

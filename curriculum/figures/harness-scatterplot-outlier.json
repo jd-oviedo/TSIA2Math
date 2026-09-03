@@ -1,0 +1,11 @@
+{
+  "type": "coordinate_plane",
+  "xLabel": "Study minutes",
+  "yLabel": "Quiz score",
+  "xRange": [0, 60],
+  "yRange": [0, 100],
+  "plots": [
+    { "path": [[5, 55], [55, 90]], "scatter": "moderate", "n": 20, "points": [[10, 20]] }
+  ],
+  "alt": "A scatterplot of study minutes, from 0 to 60, against quiz score, from 0 to 100. 20 points scatter moderately around a rising trend from about 5 minutes and a score of 55 to 55 minutes and a score of 90, plus one stated outlier at 10 minutes with a score of only 20."
+}
