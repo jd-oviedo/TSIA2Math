@@ -48,15 +48,44 @@ const EXPECTED = {
   'teacher-annual': ['https://buy.stripe.com/00w5kD5J6bXSa657nh7AI07', 'teacher-core'],
   'teacher-pro-monthly': ['https://buy.stripe.com/eVq9ATgnK0fa2DDbDx7AI08', 'teacher-pro'],
   'teacher-pro-annual': ['https://buy.stripe.com/fZudR96Nafa4fqpbDx7AI09', 'teacher-pro'],
+  // The $5 tripwire. Its URL is a PLACEHOLDER until Juan pastes the real one,
+  // and the route refuses the slug while it is (see isSellable). When the paste
+  // happens this row goes stale and the URL check below goes red, which is the
+  // reminder to confirm the pasted URL against the Stripe dashboard here too.
+  'tripwire': ['https://buy.stripe.com/PASTE_THE_TRIPWIRE_URL_HERE', 'full-course'],
 };
+
+const SLUG_COUNT = Object.keys(EXPECTED).length;
+const PLACEHOLDER_MARKER = 'PASTE_THE_';
 
 // The two founding links. Reachable directly until Friday, never sellable here.
 const FOUNDING = ['9B614ndby1je9210YT7AI02', 'fZu6oH8Vi3rm921cHB7AI03'];
 
 const ASSERTIONS = {
-  'all six marketing slugs are accepted': (s) => {
+  'all seven marketing slugs are accepted': (s) => {
     const t = parse(s);
-    return Object.keys(EXPECTED).every((k) => k in t) && Object.keys(t).length === 6;
+    return Object.keys(EXPECTED).every((k) => k in t) && Object.keys(t).length === SLUG_COUNT;
+  },
+
+  // A placeholder URL must never be forwarded to. The gate is matched on the
+  // marker rather than on the slug, so it also covers any future row that ships
+  // before its link exists.
+  'an unpasted placeholder URL is refused before the forward': (s) => {
+    const code = s.replace(/\/\/[^\n]*/g, '').replace(/\/\*[\s\S]*?\*\//g, '');
+    return (
+      new RegExp(`const UNPASTED_MARKER = "${PLACEHOLDER_MARKER}"`).test(code) &&
+      /if \(!isSlug\(plan\) \|\| !isSellable\(PRODUCTS\[plan\]\)\)/.test(code)
+    );
+  },
+
+  // The only slug whose forward is guarded, and the guard must be the shared
+  // plan-agnostic predicate: planGrants alone would wave a Practice Pass holder
+  // through to a $5 purchase the webhook then refuses.
+  'the tripwire forward is guarded on the plan-agnostic predicate': (s) => {
+    const code = s.replace(/\/\/[^\n]*/g, '').replace(/\/\*[\s\S]*?\*\//g, '');
+    const guardCall = /if \(plan === TRIPWIRE_SLUG\) \{\s*const held = await tripwireHolderGuard\(user\.id\);/.test(code);
+    const fn = code.slice(code.indexOf('async function tripwireHolderGuard'), code.indexOf('export async function GET'));
+    return guardCall && /isEntitledWithLegacyFallback\(/.test(fn) && !/if \(planGrants\(/.test(fn);
   },
 
   'each slug carries the URL confirmed in the Stripe dashboard': (s) => {
@@ -153,10 +182,38 @@ const FAULTS = [
     // URL and its plan are gone with it. Listed rather than narrowed, because
     // the collateral IS the correct behaviour here.
     expect: [
-      'all six marketing slugs are accepted',
+      'all seven marketing slugs are accepted',
       'each slug carries the URL confirmed in the Stripe dashboard',
       'each slug names the product it actually sells',
     ],
+  },
+  {
+    name: 'the placeholder gate is removed, so an unpasted URL is forwarded to',
+    edit: (s) => s.replace('if (!isSlug(plan) || !isSellable(PRODUCTS[plan])) {', 'if (!isSlug(plan)) {'),
+    expect: ['an unpasted placeholder URL is refused before the forward'],
+  },
+  {
+    name: 'the tripwire is mislabelled as practice-pass, so a $5 buyer is recorded on the wrong plan',
+    edit: (s) =>
+      s.replace(
+        'url: "https://buy.stripe.com/PASTE_THE_TRIPWIRE_URL_HERE",\n    plan: "full-course",',
+        'url: "https://buy.stripe.com/PASTE_THE_TRIPWIRE_URL_HERE",\n    plan: "practice-pass",'
+      ),
+    expect: ['each slug names the product it actually sells'],
+  },
+  {
+    name: 'the holder guard is downgraded to planGrants, so a Practice Pass holder is sold the tripwire',
+    edit: (s) =>
+      s.replace(
+        /const ownLive = isEntitledWithLegacyFallback\([\s\S]*?\);/,
+        'const ownLive = false;\n    if (planGrants(row.plan, "curriculum")) return "/dashboard?upgrade=held";'
+      ),
+    expect: ['the tripwire forward is guarded on the plan-agnostic predicate'],
+  },
+  {
+    name: 'the guard is no longer called on the tripwire forward',
+    edit: (s) => s.replace('if (plan === TRIPWIRE_SLUG) {', 'if (plan === "never") {'),
+    expect: ['the tripwire forward is guarded on the plan-agnostic predicate'],
   },
 ];
 

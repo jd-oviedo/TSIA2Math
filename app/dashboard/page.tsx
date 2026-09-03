@@ -34,6 +34,7 @@ import DiagnosticCta from './DiagnosticCta';
 import JoinClassPanel from './JoinClassPanel';
 import JoinClassDisclosure from './JoinClassDisclosure';
 import JoinResultBanner from './JoinResultBanner';
+import UpgradeHeldBanner from './UpgradeHeldBanner';
 import FlagsPanel from './FlagsPanel';
 import { C } from '@/app/components/curriculum-theme';
 import { FONT_HEADING, FONT_BODY } from '@/app/components/fonts';
@@ -46,14 +47,16 @@ import { V } from '@/app/components/dashboard-theme';
 export default async function DashboardHome({
   searchParams,
 }: {
-  searchParams: Promise<{ join?: string; jc?: string }>;
+  searchParams: Promise<{ join?: string; jc?: string; upgrade?: string }>;
 }) {
   const profile = await getProfile();
   if (!profile) return null; // The layout has already redirected.
 
   // The join-code outcome, written onto this URL by app/auth/callback. `jc` is
   // the class name, so the banner can say which class rather than "a class".
-  const { join, jc } = await searchParams;
+  // `upgrade` is written by /upgrade?plan=tripwire when it turns away a visitor
+  // who already holds access. See UpgradeHeldBanner.
+  const { join, jc, upgrade } = await searchParams;
 
   const [
     { topics, shapes },
@@ -288,8 +291,14 @@ export default async function DashboardHome({
           conditional children, because an empty SectionGroup is still a flex
           item and would leave a 28px hole where a group used to be. */}
       <PageStack>
-        {(join || !testedBefore) && (
+        {(join || upgrade || !testedBefore) && (
           <SectionGroup>
+            {/* The tripwire turn-away, in the same slot as the join outcome
+                and for the same reason: it answers the question the student
+                arrived holding, which here is "did my purchase go through".
+                It did not need to. */}
+            {upgrade && <UpgradeHeldBanner reason={upgrade} />}
+
             {/* First thing in the COLUMN when a class code came through the
                 sign-in, because it answers the question the student is
                 holding: did it work? Rendered for EVERY outcome including the
