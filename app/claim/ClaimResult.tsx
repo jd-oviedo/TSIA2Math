@@ -33,7 +33,11 @@ const PLAN_LABELS: Record<Plan, string> = {
 // Where "Continue" goes. A teacher plan earns the teacher dashboard; everything
 // else lands on the student dashboard. Both destinations gate themselves, so a
 // wrong guess here is a redirect, never access.
-function destinationFor(plan: Plan | null): { href: string; label: string } {
+//
+// Exported because page.tsx sends an already-entitled buyer to the same place
+// this button would, and a second copy of the rule is how the two would drift.
+// Takes a string rather than Plan so a profile column can be passed as read.
+export function destinationFor(plan: string | null): { href: string; label: string } {
   if (plan === "teacher-core" || plan === "teacher-pro") {
     return { href: "/teacher", label: "Go to your dashboard" };
   }
@@ -91,7 +95,12 @@ function copyFor(outcome: ClaimScreen, planLabel: string | null): Copy {
         badge: "NOT FOUND",
         tone: "holding",
         heading: "We don't have a purchase for this link.",
-        body: "Either the link is incomplete, or the purchase was already applied to an account automatically. Try signing in first — and if you still don't have access, email support@unpackmath.com with your receipt and we'll fix it by hand.",
+        // Read by two people: a signed-in buyer who beat the webhook by a few
+        // seconds (their purchase is real and still landing), and a signed-out
+        // reader holding a link that matches nothing. The first is told to wait
+        // and refresh, because signing in again is not the fix; the second is
+        // still told to sign in. Neither is told the purchase is lost.
+        body: "Either the link is incomplete, or the purchase was already applied to an account automatically. If you just paid, it may still be processing: give it a moment and refresh this page. If you are not signed in yet, sign in first. If you still don't have access, email support@unpackmath.com with your receipt and we'll fix it by hand.",
         cta: true,
       };
 
