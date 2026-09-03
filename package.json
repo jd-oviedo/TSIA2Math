@@ -28,6 +28,7 @@
     "test:tripwire": "node --import ./scripts/ts-alias-hook.mjs scripts/faultproof_tripwire.mjs",
     "test:tripwire-day6": "node --import ./scripts/ts-alias-hook.mjs scripts/faultproof_tripwire_day6.mjs",
     "test:upgrade-slugs": "node scripts/faultproof_upgrade_slugs.mjs",
+    "test:tripwire-upgrade": "node --import ./scripts/ts-alias-hook.mjs scripts/faultproof_tripwire_upgrade.mjs",
     "test:gumu-tier": "node scripts/verify_gumu_tier.mjs",
     "test:official-scores-gate": "node scripts/verify_official_scores_gate.mjs",
     "test:official-scores": "node scripts/verify_official_scores.mjs",
