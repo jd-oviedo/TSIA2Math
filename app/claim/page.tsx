@@ -3,8 +3,9 @@ import { createClient } from "../lib/supabase-server";
 import { createAdminClient } from "../lib/supabase-admin";
 import { claimPending } from "../lib/pending-entitlements";
 import { claimRateLimit, safeLimit } from "../lib/rate-limit";
+import { isEntitledWithLegacyFallback } from "../lib/entitlement";
 import ClaimClient from "./ClaimClient";
-import ClaimResult from "./ClaimResult";
+import ClaimResult, { destinationFor } from "./ClaimResult";
 
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
@@ -43,6 +44,76 @@ export const metadata = {
 //   1. no session id     -> /dashboard, which gates itself
 //   2. signed out        -> the Google bounce, back to this same URL
 //   3. signed in         -> rate limit, then claim, then say what happened
+//   4. nothing owed      -> if their own row is already live, the dashboard;
+//                           otherwise the not-found card, as the last resort
+
+// The columns the shared predicate needs, and nothing else. `plan` rides along
+// only to pick the destination.
+const OWN_ROW_COLUMNS = "plan, plan_status, access_until, stripe_payment_link_id, subscription_status";
+
+type OwnRow = {
+  plan: string | null;
+  plan_status: string | null;
+  access_until: string | null;
+  stripe_payment_link_id: string | null;
+  subscription_status: string | null;
+};
+
+/**
+ * Where a signed-in buyer with nothing owed should land, or null to show the
+ * not-found card.
+ *
+ * THE CASE THIS CLOSES. A buyer who went through /upgrade was signed in when
+ * they paid, so the webhook matched them on client_reference_id and wrote the
+ * entitlement straight onto their profile. No pending row was ever needed. The
+ * /success page still hands them the claim link, and this page then found no
+ * row and told them "we don't have a purchase for this link" while their
+ * access was live. Confirmed for the $5 tripwire, the first product sold only
+ * through /upgrade.
+ *
+ * AFTER THE PENDING LOOKUP, NEVER INSTEAD OF IT. The pending row is the proof
+ * of a purchase that has not landed, and a buyer holding an older live pass
+ * who just bought a newer one must have the newer one applied, not be sent to
+ * a dashboard showing the old one. So claimPending runs first and its answer
+ * wins; this only decides what "nothing owed" means for someone who already
+ * has access. Reading the caller's OWN row reveals nothing they cannot see on
+ * their dashboard, and the signed-out branch above is untouched, so no purchase
+ * state is exposed before sign-in.
+ *
+ * PLAN-AGNOSTIC. The shared predicate, not planGrants: the question is "do
+ * they hold anything live", and a Practice Pass holder who was told NOT FOUND
+ * would be as confused as a Full Course one. planGrants is not consulted at
+ * all; the destination comes from destinationFor, the same rule the card's own
+ * Continue button follows.
+ *
+ * A READ ERROR FALLS THROUGH TO THE CARD. It is the state the page showed
+ * before this existed, and the card already tells them to refresh.
+ */
+async function landingForEntitled(
+  admin: ReturnType<typeof createAdminClient>,
+  userId: string
+): Promise<string | null> {
+  const { data, error } = await admin
+    .from("profiles")
+    .select(OWN_ROW_COLUMNS)
+    .eq("id", userId)
+    .maybeSingle();
+  if (error) {
+    console.error(`[claim] could not read ${userId} after a nothing-owed claim:`, error.message);
+    return null;
+  }
+  if (!data) return null;
+  const row = data as OwnRow;
+  const live = isEntitledWithLegacyFallback(
+    row.plan_status,
+    row.access_until,
+    row.stripe_payment_link_id,
+    row.subscription_status,
+    "claim/nothing-owed"
+  );
+  if (!live) return null;
+  return destinationFor(row.plan).href;
+}
 export default async function ClaimPage({
   searchParams,
 }: {
@@ -80,6 +151,13 @@ export default async function ClaimPage({
   // Exactly one result: a session-id claim considers at most one row.
   const admin = createAdminClient();
   const [result] = await claimPending(admin, user.id, { sessionId: checkoutSessionId });
+
+  // Only the not-found outcome asks the second question. Every other outcome is
+  // an answer about THIS purchase and is shown as-is.
+  if (result.outcome === "nothing-owed") {
+    const landing = await landingForEntitled(admin, user.id);
+    if (landing) redirect(landing);
+  }
 
   return <ClaimResult outcome={result.outcome} plan={result.plan} />;
 }
