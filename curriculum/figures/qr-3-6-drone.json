@@ -1,0 +1,11 @@
+{
+  "type": "coordinate_plane",
+  "xRange": [0, 10],
+  "yRange": [0, 200],
+  "xLabel": "Time (seconds)",
+  "yLabel": "Altitude (meters)",
+  "series": [
+    { "points": [[0, 0], [3, 120], [7, 200], [10, 80]] }
+  ],
+  "alt": "A line graph with time in seconds along the bottom, running from 0 to 10, and altitude in meters up the side, running from 0 to 200 and marked every 20. Four points are plotted and joined in order: 0 meters at 0 seconds, 120 meters at 3 seconds, 200 meters at 7 seconds, and 80 meters at 10 seconds. The line climbs to its highest point at 7 seconds, then falls to 10 seconds."
+}
