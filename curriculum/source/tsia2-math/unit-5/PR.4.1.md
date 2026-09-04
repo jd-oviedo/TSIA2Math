@@ -326,7 +326,7 @@ Two scatterplots use the same axes: study hours across the bottom and test score
 
 **Item 3**
 
-Three scatterplots are shown. Plot 1 shows a loose upward cloud. Plot 2 shows points clustered tightly along a downward line. Plot 3 shows a moderately scattered upward pattern. Which plot shows the strongest linear association?
+Three scatterplots are described. Plot 1 shows a loose upward cloud. Plot 2 shows points clustered tightly along a downward line. Plot 3 shows a moderately scattered upward pattern. Which plot shows the strongest linear association?
 
 - A) Plot 1, because positive associations are stronger than negative ones.
 - B) Plot 3, because its points sit nearest the center of the graph.
@@ -664,7 +664,7 @@ Step 3: Plot 1's points lie very close to the line; Plot 2's are widely scattere
 
 ---
 
-**Item 3: Three scatterplots are shown. Plot 1 shows a loose upward cloud. Plot 2 shows points clustered tightly along a downward line. Plot 3 shows a moderately scattered upward pattern. Which plot shows the strongest linear association?**
+**Item 3: Three scatterplots are described. Plot 1 shows a loose upward cloud. Plot 2 shows points clustered tightly along a downward line. Plot 3 shows a moderately scattered upward pattern. Which plot shows the strongest linear association?**
 
 Step 1: Rank by tightness, not by direction.
 - Plot 1: loose
