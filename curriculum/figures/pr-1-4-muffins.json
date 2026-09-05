@@ -1,0 +1,1 @@
+{"type":"data_table","columns":["Muffin","Sold"],"rows":[{"label":"Blueberry","cells":["24"]},{"label":"Banana","cells":["18"]},{"label":"Corn","cells":["11"]},{"label":"Bran","cells":["15"]}],"alt":"A table of muffins sold by type. Blueberry 24, Banana 18, Corn 11, Bran 15."}
