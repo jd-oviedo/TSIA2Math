@@ -771,7 +771,7 @@ function buildSolid3d(spec) {
     out += txt([n(CX + R / 2), n(cy - 0.87 * (R * 0.3) - CLEARANCE - 2 - 4)], L.radius,
       'middle', INK, 13, role('length') + INTERNAL);
   } else if (spec.shape === 'square_pyramid') {
-    const avail = base - top, availW = W - 140;
+    const avail = base - top, availW = W - 164;
     const s = Math.min(avail / d.h, availW / (d.b * (1 + OBL.dx)));
     const bw = d.b * s, dep = bw * OBL.dx, hh = d.h * s;
     const fl = [n(CX - bw / 2 - dep / 2), base], fr = [n(fl[0] + bw), base];
@@ -782,10 +782,62 @@ function buildSolid3d(spec) {
     out += seg(apex, br, INK, 2);
     const cen = [n((fl[0] + br[0]) / 2), n(base - dep / 2)];
     out += seg(apex, cen, INK, 1.2, '4 3');
-    out += txt([n(apex[0] + 16), n((apex[1] + cen[1]) / 2)], L.height, 'start', INK, 13,
-      role('length') + INTERNAL);
+    // Height on its own dimension line to the right, clear of every edge.
+    const phx = n(br[0] + 22);
+    out += seg([phx, apex[1]], [phx, cen[1]], INK, 1.2)
+      + seg([n(phx - 4), apex[1]], [n(phx + 4), apex[1]], INK, 1.2)
+      + seg([n(phx - 4), cen[1]], [n(phx + 4), cen[1]], INK, 1.2);
+    out += txt([n(phx + 7), n((apex[1] + cen[1]) / 2)], L.height, 'start', INK, 13, role('length'));
     out += txt([n((fl[0] + fr[0]) / 2), n(base + 20)], L.base_edge, 'middle', INK, 13, role('length'));
     if (L.slant_height) out += txt([n((apex[0] + fl[0]) / 2 - 12), n((apex[1] + base) / 2)], L.slant_height, 'end', INK, 13, role('length'));
+  } else if (spec.shape === 'cylinder_cone') {
+    // A cone sitting on a cylinder, sharing the cylinder's top circle as the
+    // cone's base. dims: r, h1 (cylinder), h2 (cone). One scale for all three.
+    const r = d.r, h1 = d.h1, h2 = d.h2;
+    const availC = base - top, availWC = W - 130;
+    const sc = Math.min(availC / (h1 + h2), availWC / (2 * r));
+    const rx = n(r * sc), ry = n(rx * 0.3);
+    const baseY = base, midY = n(base - h1 * sc), apexY = n(base - h1 * sc - h2 * sc);
+    out += `<ellipse cx="${CX}" cy="${midY}" rx="${rx}" ry="${ry}" fill="${LINE}22" stroke="${INK}" stroke-width="2"/>`;
+    out += `<path d="M${n(CX - rx)},${midY} V${baseY} A${rx},${ry} 0 0 0 ${n(CX + rx)},${baseY} V${midY}" fill="${LINE}22" stroke="${INK}" stroke-width="2"/>`;
+    out += `<path d="M${n(CX - rx)},${midY} L${CX},${apexY} L${n(CX + rx)},${midY}" fill="${LINE}22" stroke="${INK}" stroke-width="2"/>`;
+    out += seg([CX, midY], [n(CX - rx), midY], INK, 1.3, '4 3');
+    out += txt([n(CX - rx - 6), n(midY + 4)], L.radius, 'end', INK, 13, role('length'));
+    const chx = n(CX + rx + 26);
+    out += seg([chx, apexY], [chx, midY], INK, 1.2)
+      + seg([n(chx - 4), apexY], [n(chx + 4), apexY], INK, 1.2)
+      + seg([n(chx - 4), midY], [n(chx + 4), midY], INK, 1.2);
+    out += txt([n(chx + 7), n((apexY + midY) / 2)], L.height2, 'start', INK, 13, role('length'));
+    out += seg([chx, midY], [chx, baseY], INK, 1.2)
+      + seg([n(chx - 4), baseY], [n(chx + 4), baseY], INK, 1.2);
+    out += txt([n(chx + 7), n((midY + baseY) / 2)], L.height1, 'start', INK, 13, role('length'));
+  } else if (spec.shape === 'prism_pyramid') {
+    // A square pyramid on a cube, sharing the cube's top face as the pyramid
+    // base. dims: s (cube edge), hp (pyramid height). One scale for both.
+    const E = d.s, hp = d.hp;
+    const availP = base - top, availWP = W - 150;
+    const sc = Math.min(availP / (1.25 * E + hp), availWP / (1.5 * E));
+    const lw = E * sc, hh = E * sc, dep = E * sc * 0.5;
+    const x0 = n(CX - (lw + dep) / 2), y0 = n(base);
+    const A = [x0, y0], B = [n(x0 + lw), y0], C = [n(x0 + lw), n(y0 - hh)], D = [x0, n(y0 - hh)];
+    const A2 = [n(A[0] + dep), n(A[1] - dep)], B2 = [n(B[0] + dep), n(B[1] - dep)];
+    const C2 = [n(C[0] + dep), n(C[1] - dep)], D2 = [n(D[0] + dep), n(D[1] - dep)];
+    out += poly([A, B, C, D], INK, 2, LINE + '22');
+    out += poly([D, C, C2, D2], INK, 2, LINE + '18');
+    out += poly([C, B, B2, C2], INK, 2, LINE + '10');
+    out += seg(A, A2, INK, 1, '3 3') + seg(A2, B2, INK, 1, '3 3') + seg(A2, D2, INK, 1, '3 3');
+    const cenTop = [n((D[0] + C2[0]) / 2), n((D[1] + C2[1]) / 2)];
+    const apexP = [cenTop[0], n(cenTop[1] - hp * sc)];
+    out += `<path d="M${D.join(',')} L${apexP.join(',')} L${C.join(',')} Z" fill="${LINE}22" stroke="${INK}" stroke-width="2"/>`;
+    out += seg(apexP, C2, INK, 2);
+    out += seg(apexP, D2, INK, 1, '3 3');
+    out += seg(apexP, cenTop, INK, 1.2, '4 3');
+    out += txt([n((A[0] + B[0]) / 2), n(y0 + 20)], L.edge, 'middle', INK, 13, role('length'));
+    const phx2 = n(Math.max(B2[0], C2[0]) + 22);
+    out += seg([phx2, apexP[1]], [phx2, cenTop[1]], INK, 1.2)
+      + seg([n(phx2 - 4), apexP[1]], [n(phx2 + 4), apexP[1]], INK, 1.2)
+      + seg([n(phx2 - 4), cenTop[1]], [n(phx2 + 4), cenTop[1]], INK, 1.2);
+    out += txt([n(phx2 + 7), n((apexP[1] + cenTop[1]) / 2)], L.pyr_height, 'start', INK, 13, role('length'));
   } else {
     // rectangular_prism
     const avail = base - top, availW = W - 120;
@@ -1128,6 +1180,23 @@ export function verifyShape(spec, svg) {
       const axis = [...svg.matchAll(/<line x1="([-\d.]+)" y1="([-\d.]+)" x2="([-\d.]+)" y2="([-\d.]+)" stroke="[^"]*" stroke-width="1.2" stroke-dasharray="4 3"\/>/g)]
         .map(m => Math.hypot(Number(m[3]) - Number(m[1]), Number(m[4]) - Number(m[2])))[0];
       add('height : base edge ratio', axis / baseEdge, d.h / d.b, 0.03);
+    }
+    if (spec.shape === 'cylinder_cone') {
+      const rx = Number([...svg.matchAll(RE_ELL)][0][3]);
+      const verts = [...svg.matchAll(/<line x1="([-\d.]+)" y1="([-\d.]+)" x2="\1" y2="([-\d.]+)"/g)]
+        .map(m => Math.abs(Number(m[3]) - Number(m[2]))).sort((a, b) => b - a);
+      const drawn = [verts[0], verts[1]].sort((a, b) => b - a);
+      const exp = [d.h1, d.h2].sort((a, b) => b - a);
+      add('taller solid height : radius', drawn[0] / rx, exp[0] / d.r, 0.04);
+      add('shorter solid height : radius', drawn[1] / rx, exp[1] / d.r, 0.04);
+    }
+    if (spec.shape === 'prism_pyramid') {
+      const front = parsePolys(svg)[0];
+      const ls = sideLens(front);
+      add('cube front square', ls[0] / ls[1], 1, 0.03);
+      const axis = [...svg.matchAll(/<line x1="([-\d.]+)" y1="([-\d.]+)" x2="([-\d.]+)" y2="([-\d.]+)" stroke="[^"]*" stroke-width="1.2" stroke-dasharray="4 3"\/>/g)]
+        .map(m => Math.hypot(Number(m[3]) - Number(m[1]), Number(m[4]) - Number(m[2])))[0];
+      add('pyramid height : edge ratio', axis / ls[0], d.hp / d.s, 0.04);
     }
   }
 

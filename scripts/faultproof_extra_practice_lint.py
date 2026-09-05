@@ -94,14 +94,16 @@ def fault_unknown_band(text):
 def fault_duplicate_number(text):
     """Author two Part 5 items as number 3. Both resolve to one question."""
     head, body = part5(text)
-    return head + body.replace('\n4. A square pyramid has a base edge of $6$',
-                               '\n3. A square pyramid has a base edge of $6$', 1)
+    return head + body.replace('\n4. What is its volume?',
+                               '\n3. What is its volume?', 1)
 
 
 def fault_free_response(text):
-    """Strip one Part 5 item's choices. isPrintable() drops it silently."""
+    """Strip one Part 5 item's choices. isPrintable() drops it silently.
+    Skips any figure block between the stem and its choices so the fault
+    still plants once a Part 5 item carries a figure."""
     head, body = part5(text)
-    return head + re.sub(r'(\n6\. A solid is a cube[^\n]*\n)(?:   - [A-D]\)[^\n]*\n)+',
+    return head + re.sub(r'(\n6\. What is its total volume\?[^\n]*\n(?:[^\n]*\n)*?)(?:   - [A-D]\)[^\n]*\n)+',
                          r'\1', body)
 
 
@@ -125,8 +127,8 @@ def fault_answer_leak(text):
     """Write an answer line into Part 5, which reaches anon through the view."""
     head, body = part5(text)
     return head + body.replace(
-        '2. A cylinder has a radius of $4$ and a height of $6$. What is its volume?',
-        '2. A cylinder has a radius of $4$ and a height of $6$. What is its volume?\n\n'
+        '2. What is its volume?',
+        '2. What is its volume?\n\n'
         '**Answer: B**', 1)
 
 

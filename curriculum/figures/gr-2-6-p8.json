@@ -1,0 +1,1 @@
+{"type": "solid3d", "shape": "cylinder_cone", "dims": {"r": 3, "h1": 10, "h2": 4}, "labels": {"radius": "r = 3", "height1": "h = 10", "height2": "h = 4"}, "alt": "A cone of height 4 sitting on top of a cylinder of height 10, both with a radius of 3, sharing the cylinder's top circle as the cone's base."}

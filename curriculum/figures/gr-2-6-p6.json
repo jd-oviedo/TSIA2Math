@@ -1,0 +1,1 @@
+{"type": "solid3d", "shape": "cylinder", "dims": {"r": 4, "h": 10}, "labels": {"radius": "r = 4", "height": "h = 10"}, "alt": "A cylinder with a radius of 4 across its top and a height of 10 dimensioned beside it."}
