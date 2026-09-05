@@ -1,0 +1,1 @@
+{"type": "solid3d", "shape": "cone", "dims": {"r": 3, "h": 6}, "labels": {"radius": "r = x", "height": "h = 6"}, "alt": "A cone with its base radius labelled r = x by a dashed line across the circular base, and a perpendicular height labelled h = 6 on a vertical line beside the solid."}

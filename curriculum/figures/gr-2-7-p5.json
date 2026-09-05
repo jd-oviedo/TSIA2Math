@@ -1,0 +1,1 @@
+{"type": "polygon", "shape": "rectangle", "dims": {"w": 8, "h": 5}, "labels": {"0": "3x", "1": "x + 2"}, "rightAngles": [0, 1, 2, 3], "alt": "A rectangle with a length labelled 3x along the base and a width labelled x + 2 up the side, right-angle marks at all four corners."}
