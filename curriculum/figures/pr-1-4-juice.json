@@ -1,0 +1,1 @@
+{"type":"data_table","columns":["Juice","Sold"],"rows":[{"label":"Apple","cells":["30"]},{"label":"Grape","cells":["21"]},{"label":"Orange","cells":["27"]},{"label":"Berry","cells":["14"]}],"alt":"A table of juice cartons sold by flavor. Apple 30, Grape 21, Orange 27, Berry 14."}

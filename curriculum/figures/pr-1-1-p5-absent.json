@@ -1,0 +1,1 @@
+{"type":"dot_plot","xValues":[0,1,2,3,4],"counts":[4,6,5,3,1],"xLabel":"Days absent this month","alt":"A dot plot of days absent this month per student. Above 0 days there are 4 dots, above 1 day there are 6 dots, above 2 days there are 5 dots, above 3 days there are 3 dots, and above 4 days there is 1 dot."}
