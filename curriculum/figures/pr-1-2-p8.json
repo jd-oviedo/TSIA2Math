@@ -1,0 +1,1 @@
+{"type":"data_table","columns":["Pet","Frequency"],"rows":[{"label":"Dog","cells":["10"]},{"label":"Cat","cells":["8"]},{"label":"Fish","cells":["3"]},{"label":"None","cells":["5"]},{"label":"Total","cells":["25"]}],"alt":"A frequency table of pets. Dog 10, Cat 8, Fish 3, None 5, and a stated Total of 25."}
