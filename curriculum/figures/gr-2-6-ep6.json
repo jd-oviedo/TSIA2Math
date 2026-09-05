@@ -1,0 +1,1 @@
+{"type": "solid3d", "shape": "prism_pyramid", "dims": {"s": 4, "hp": 3}, "labels": {"edge": "4", "pyr_height": "3"}, "alt": "A square pyramid of height 3 sitting on top of a cube of edge 4, sharing the cube's top face as the pyramid's base."}
