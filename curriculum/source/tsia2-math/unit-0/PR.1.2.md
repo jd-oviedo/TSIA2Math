@@ -251,10 +251,10 @@ Solve each problem. Show your thinking.
 
 <!-- figure: pr-1-2-p10 -->
 ![A frequency table listing only two colors. Red 7 and Blue 4.](data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzNDAgOTYiIHdpZHRoPSIzNDAiIGhlaWdodD0iOTYiIHJvbGU9ImltZyIgYXJpYS1sYWJlbD0iQSBmcmVxdWVuY3kgdGFibGUgbGlzdGluZyBvbmx5IHR3byBjb2xvcnMuIFJlZCA3IGFuZCBCbHVlIDQuIj48cmVjdCB3aWR0aD0iMzQwIiBoZWlnaHQ9Ijk2IiBmaWxsPSIjRkZGRkZGIiByeD0iMTAiLz48cmVjdCB4PSIxMiIgeT0iMTIiIHdpZHRoPSIxMjcuMjgiIGhlaWdodD0iMjQiIGZpbGw9IiM2RTlEQzgiIGZpbGwtb3BhY2l0eT0iMC4xOCIvPjxnIHN0cm9rZT0iI0UyRENDQSIgc3Ryb2tlLXdpZHRoPSIxIj48bGluZSBkYXRhLXZsaW5lPSIwIiB4MT0iMTIiIHkxPSIxMiIgeDI9IjEyIiB5Mj0iODQiLz48bGluZSBkYXRhLXZsaW5lPSIxIiB4MT0iNTguMTIiIHkxPSIxMiIgeDI9IjU4LjEyIiB5Mj0iODQiLz48bGluZSBkYXRhLXZsaW5lPSIyIiB4MT0iMTM5LjI4IiB5MT0iMTIiIHgyPSIxMzkuMjgiIHkyPSI4NCIvPjxsaW5lIGRhdGEtaGxpbmU9IjAiIHgxPSIxMiIgeTE9IjEyIiB4Mj0iMTM5LjI4IiB5Mj0iMTIiLz48bGluZSBkYXRhLWhsaW5lPSIxIiB4MT0iMTIiIHkxPSIzNiIgeDI9IjEzOS4yOCIgeTI9IjM2Ii8+PGxpbmUgZGF0YS1obGluZT0iMiIgeDE9IjEyIiB5MT0iNjAiIHgyPSIxMzkuMjgiIHkyPSI2MCIvPjxsaW5lIGRhdGEtaGxpbmU9IjMiIHgxPSIxMiIgeTE9Ijg0IiB4Mj0iMTM5LjI4IiB5Mj0iODQiLz48L2c+PGcgZm9udC1mYW1pbHk9InVpLXNhbnMtc2VyaWYsc3lzdGVtLXVpLHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMTEiIGZpbGw9IiMwRTBFMTEiPjx0ZXh0IGRhdGEtaGVhZD0iMCIgeD0iMTciIHk9IjI4IiBmb250LXdlaWdodD0iNzAwIj5Db2xvcjwvdGV4dD48dGV4dCBkYXRhLWhlYWQ9IjEiIHg9IjYzLjEyIiB5PSIyOCIgZm9udC13ZWlnaHQ9IjcwMCI+RnJlcXVlbmN5PC90ZXh0Pjx0ZXh0IGRhdGEtY2VsbD0iMC0wIiB4PSIxNyIgeT0iNTIiIGZvbnQtd2VpZ2h0PSI2MDAiPlJlZDwvdGV4dD48dGV4dCBkYXRhLWNlbGw9IjAtMSIgeD0iNjMuMTIiIHk9IjUyIj43PC90ZXh0Pjx0ZXh0IGRhdGEtY2VsbD0iMS0wIiB4PSIxNyIgeT0iNzYiIGZvbnQtd2VpZ2h0PSI2MDAiPkJsdWU8L3RleHQ+PHRleHQgZGF0YS1jZWxsPSIxLTEiIHg9IjYzLjEyIiB5PSI3NiI+NDwvdGV4dD48L2c+PC9zdmc+)
-    - A) Make no change, because $11$ and $12$ are close enough.
-    - B) Change Blue from $4$ to $5$, because the table is one short.
-    - C) Change the stated total from $12$ to $11$, to match the two rows shown.
-    - D) Add a Green row with frequency $1$, because Red and Blue are both correct.
+   - A) Make no change, because $11$ and $12$ are close enough.
+   - B) Change Blue from $4$ to $5$, because the table is one short.
+   - C) Change the stated total from $12$ to $11$, to match the two rows shown.
+   - D) Add a Green row with frequency $1$, because Red and Blue are both correct.
 
 ---
 
@@ -1058,7 +1058,7 @@ More of the same skill, for a worksheet rather than for the mastery gate. These 
 
 <!-- figure: pr-1-2-e10 -->
 ![A frequency table listing only two drinks. Tea 9 and Coffee 5.](data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzNDAgOTYiIHdpZHRoPSIzNDAiIGhlaWdodD0iOTYiIHJvbGU9ImltZyIgYXJpYS1sYWJlbD0iQSBmcmVxdWVuY3kgdGFibGUgbGlzdGluZyBvbmx5IHR3byBkcmlua3MuIFRlYSA5IGFuZCBDb2ZmZWUgNS4iPjxyZWN0IHdpZHRoPSIzNDAiIGhlaWdodD0iOTYiIGZpbGw9IiNGRkZGRkYiIHJ4PSIxMCIvPjxyZWN0IHg9IjEyIiB5PSIxMiIgd2lkdGg9IjEzNS4zNSIgaGVpZ2h0PSIyNCIgZmlsbD0iIzZFOURDOCIgZmlsbC1vcGFjaXR5PSIwLjE4Ii8+PGcgc3Ryb2tlPSIjRTJEQ0NBIiBzdHJva2Utd2lkdGg9IjEiPjxsaW5lIGRhdGEtdmxpbmU9IjAiIHgxPSIxMiIgeTE9IjEyIiB4Mj0iMTIiIHkyPSI4NCIvPjxsaW5lIGRhdGEtdmxpbmU9IjEiIHgxPSI2Ni4xOSIgeTE9IjEyIiB4Mj0iNjYuMTkiIHkyPSI4NCIvPjxsaW5lIGRhdGEtdmxpbmU9IjIiIHgxPSIxNDcuMzUiIHkxPSIxMiIgeDI9IjE0Ny4zNSIgeTI9Ijg0Ii8+PGxpbmUgZGF0YS1obGluZT0iMCIgeDE9IjEyIiB5MT0iMTIiIHgyPSIxNDcuMzUiIHkyPSIxMiIvPjxsaW5lIGRhdGEtaGxpbmU9IjEiIHgxPSIxMiIgeTE9IjM2IiB4Mj0iMTQ3LjM1IiB5Mj0iMzYiLz48bGluZSBkYXRhLWhsaW5lPSIyIiB4MT0iMTIiIHkxPSI2MCIgeDI9IjE0Ny4zNSIgeTI9IjYwIi8+PGxpbmUgZGF0YS1obGluZT0iMyIgeDE9IjEyIiB5MT0iODQiIHgyPSIxNDcuMzUiIHkyPSI4NCIvPjwvZz48ZyBmb250LWZhbWlseT0idWktc2Fucy1zZXJpZixzeXN0ZW0tdWksc2Fucy1zZXJpZiIgZm9udC1zaXplPSIxMSIgZmlsbD0iIzBFMEUxMSI+PHRleHQgZGF0YS1oZWFkPSIwIiB4PSIxNyIgeT0iMjgiIGZvbnQtd2VpZ2h0PSI3MDAiPkRyaW5rPC90ZXh0Pjx0ZXh0IGRhdGEtaGVhZD0iMSIgeD0iNzEuMTkiIHk9IjI4IiBmb250LXdlaWdodD0iNzAwIj5GcmVxdWVuY3k8L3RleHQ+PHRleHQgZGF0YS1jZWxsPSIwLTAiIHg9IjE3IiB5PSI1MiIgZm9udC13ZWlnaHQ9IjYwMCI+VGVhPC90ZXh0Pjx0ZXh0IGRhdGEtY2VsbD0iMC0xIiB4PSI3MS4xOSIgeT0iNTIiPjk8L3RleHQ+PHRleHQgZGF0YS1jZWxsPSIxLTAiIHg9IjE3IiB5PSI3NiIgZm9udC13ZWlnaHQ9IjYwMCI+Q29mZmVlPC90ZXh0Pjx0ZXh0IGRhdGEtY2VsbD0iMS0xIiB4PSI3MS4xOSIgeT0iNzYiPjU8L3RleHQ+PC9nPjwvc3ZnPg==)
-    - A) Change the stated total from $15$ to $14$, to match the two rows shown.
-    - B) Add a Water row with frequency $1$.
-    - C) Make no change, because $14$ and $15$ are close enough.
-    - D) Change Coffee from $5$ to $6$.
+   - A) Change the stated total from $15$ to $14$, to match the two rows shown.
+   - B) Add a Water row with frequency $1$.
+   - C) Make no change, because $14$ and $15$ are close enough.
+   - D) Change Coffee from $5$ to $6$.
