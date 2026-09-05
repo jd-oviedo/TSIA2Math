@@ -458,5 +458,21 @@ console.log('\n\nDATA TABLE FAULT PROOFS\n');
   ctrl('after', spec, 'pictograph');
 }
 
-console.log(`\nRESULT: ${ok ? 'the bar, box, series, bounds and table checks can fail, and do' : 'A PROOF OR CONTROL FAILED'}`);
+// -- CURVES (parabolas) -------------------------------------------------------
+// A TANGENT parabola touches the x-axis at its vertex and never crosses. The
+// root check cannot count that touch (a graze reads as 0 or 2 sign changes),
+// so verifyCurves asserts instead that the curve stays on one side of the
+// axis. Prove that assertion can fail: drop the touch point below the axis so
+// the drawn curve crosses, and confirm the tangent check reports it.
+console.log('\n\nCURVE FAULT PROOFS  (ar-3-6-p4, upward parabola tangent to the x-axis at x=3)\n');
+const tangent = new Harness('curriculum/figures/ar-3-6-p4.json');
+tangent.control('before');
+console.log('\nfault injected into the emitted SVG:');
+tangent.fault('the tangent redrawn crossing the axis (touch point dropped below the x-axis)',
+  '173.16,192.64 175,192.67 176.84,192.64',
+  '173.16,192.64 175,228 176.84,192.64',
+  ['tangent touches axis without crossing']);
+tangent.control('after');
+
+console.log(`\nRESULT: ${ok ? 'the bar, box, series, bounds, table and curve checks can fail, and do' : 'A PROOF OR CONTROL FAILED'}`);
 process.exit(ok ? 0 : 1);

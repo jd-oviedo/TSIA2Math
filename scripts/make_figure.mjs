@@ -1353,7 +1353,16 @@ export function verifyCurves(spec, svg, ix, iy, add) {
       else if (ya * yb < 0) measuredRoots.push(xa + (xb - xa) * (0 - ya) / (yb - ya));
     }
     const visibleRoots = roots.filter(r => r > spec.xRange[0] && r < spec.xRange[1]);
-    if (visibleRoots.length) {
+    // A double root (discriminant zero) is a TANGENT: the curve touches the axis
+    // at its vertex and never crosses. The vertex checks above already pin that
+    // touch at (root, 0); a grazing touch reads as 0 or 2 sign-change crossings
+    // depending on rounding, so crossing-COUNTING cannot be used here. Instead
+    // assert the curve stays on one side of the axis, which a secant (two real
+    // roots drawn by mistake) or an off-axis vertex both fail.
+    if (roots.length === 1 && visibleRoots.length === 1) {
+      const nearest = C.a > 0 ? Math.min(...pts.map(p => p[1])) : Math.max(...pts.map(p => p[1]));
+      add(`curve ${i} tangent touches axis without crossing`, nearest, 0, 0.02 * ySpan);
+    } else if (visibleRoots.length) {
       add(`curve ${i} root count`, measuredRoots.length, visibleRoots.length, 0);
       visibleRoots.slice(0, measuredRoots.length).forEach((r, j) =>
         add(`curve ${i} root ${j}`, measuredRoots[j], r, 0.01 * xSpan));
