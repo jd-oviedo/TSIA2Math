@@ -1,0 +1,1 @@
+{"type":"coordinate_plane","xLabel":"x","yLabel":"y","xRange":[0,10],"yRange":[0,100],"plots":[{"path":[[1,40],[9,60]],"scatter":"tight","n":14}],"alt":"Scatterplot A: with x from 0 to 10 and y from 0 to 100. Fourteen points cluster very tightly around a gently rising line, a strong association even though the slope is shallow."}

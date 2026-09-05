@@ -1,0 +1,1 @@
+{"type":"coordinate_plane","xLabel":"x","yLabel":"y","xRange":[0,10],"yRange":[0,100],"plots":[{"path":[[1,10],[9,90]],"scatter":"wide","n":14}],"alt":"Scatterplot B: with x from 0 to 10 and y from 0 to 100. Fourteen points rise with a steep slope but are widely scattered around the line, a weaker association than Scatterplot A despite the steeper slope."}
