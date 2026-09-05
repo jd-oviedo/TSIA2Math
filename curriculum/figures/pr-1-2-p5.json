@@ -1,0 +1,1 @@
+{"type":"data_table","columns":["Travel method","Frequency"],"rows":[{"label":"Walk","cells":["6"]},{"label":"Bus","cells":["8"]},{"label":"Car","cells":["4"]},{"label":"Bike","cells":[""]},{"label":"Total","cells":["20"]}],"alt":"A frequency table of how students travel to school. Walk 6, Bus 8, Car 4, Bike left blank, and a Total of 20."}

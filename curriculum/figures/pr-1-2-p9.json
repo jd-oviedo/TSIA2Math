@@ -1,0 +1,1 @@
+{"type":"data_table","columns":["Score","Frequency"],"rows":[{"label":"60 to 69","cells":["5"]},{"label":"70 to 79","cells":["11"]},{"label":"80 to 89","cells":["9"]},{"label":"90 to 99","cells":["5"]},{"label":"Total","cells":["30"]}],"alt":"A grouped frequency table of 30 test scores. 60 to 69: 5, 70 to 79: 11, 80 to 89: 9, 90 to 99: 5, Total 30."}

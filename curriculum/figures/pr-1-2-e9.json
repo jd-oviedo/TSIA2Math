@@ -1,0 +1,1 @@
+{"type":"data_table","columns":["Minutes","Frequency"],"rows":[{"label":"0 to 9","cells":["6"]},{"label":"10 to 19","cells":["14"]},{"label":"20 to 29","cells":["12"]},{"label":"30 to 39","cells":["8"]},{"label":"Total","cells":["40"]}],"alt":"A grouped frequency table of 40 commute times in minutes. 0 to 9: 6, 10 to 19: 14, 20 to 29: 12, 30 to 39: 8, Total 40."}
